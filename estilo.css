@@ -1,0 +1,493 @@
+/* General */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Intro animado */
+#intro {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeOut 2s ease forwards;
+  animation-delay: 2s;
+}
+#intro img {
+  width: 150px;
+  animation: zoomInOut 2s ease;
+}
+@keyframes zoomInOut {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Barra superior con fondo degradado animado */
+.barra-superior {
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #1e3c72; /* Color de fallback */
+  background-image: linear-gradient(135deg, #1e3c72, #2a5298, #1e3c72);
+  background-size: 200% 100%;
+  animation: backgroundPan 10s linear infinite; /* Animación de movimiento del degradado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap;
+  position: relative; /* Necesario para la animación del brillo */
+  overflow: hidden;
+}
+
+/* Animación de movimiento del degradado */
+@keyframes backgroundPan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: -200% 0%;
+  }
+}
+
+/* Efecto de brillo al pasar el cursor sobre la barra */
+.barra-superior::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.barra-superior:hover::before {
+  opacity: 1;
+}
+
+/* Mantengo los estilos de los botones */
+.barra-superior button,
+.barra-superior a {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px 10px;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  line-height: 1.2;
+}
+
+.barra-superior button,
+.barra-superior a {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px 10px;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  line-height: 1.2;
+}
+.barra-superior button::after,
+.barra-superior a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+.barra-superior button:hover::after,
+.barra-superior a:hover::after {
+  transform: scaleX(1);
+}
+.logo {
+  height: 40px;
+  width: auto;
+}
+.nombre-colegio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Contenido */
+.contenido {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+.contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.contenido p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+.acciones {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.acciones button {
+  padding: 12px 25px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.acciones button:hover {
+  background: #28a745;
+  transform: scale(1.05);
+}
+
+/* CTA Modalidades */
+.cta-modalidades {
+  margin-top: 40px;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-modalidades h2 {
+  color: #1e3c72;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+.cta-modalidades p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+.cta-modalidades button {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.cta-modalidades button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+}
+
+/* Fondo animado */
+.fondo {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+.slider {
+  opacity: 0.5;
+  height: 100%;
+  width: 300%;
+  display: flex;
+  animation: deslizar 18s infinite;
+  background-color: rgb(0, 0, 0);
+}
+.slider img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+@keyframes deslizar {
+  0%   { transform: translateX(0); }
+  33%  { transform: translateX(-100vw); }
+  66%  { transform: translateX(-200vw); }
+  100% { transform: translateX(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido h1 { font-size: 2rem; }
+  .contenido p { font-size: 1rem; }
+  .barra-superior {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .acciones {
+    flex-direction: column;
+  }
+}
+@media (max-width: 480px) {
+  .contenido h1 { font-size: 1.6rem; }
+  .cta-modalidades { padding: 20px; }
+  .cta-modalidades h2 { font-size: 1.4rem; }
+}
+/* Fondo de página */
+body {
+  background: #eef2f7; /* gris azulado claro */
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sección Modalidades */
+.contenido {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.contenido h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.contenido p {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Grid fijo de 3 columnas en desktop */
+.modalidades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* fuerza 3 columnas */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Tarjetas */
+.modalidad {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover animado */
+.modalidad:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Brillo al pasar */
+.modalidad::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+  transform: skewX(-25deg);
+}
+
+.modalidad:hover::after {
+  animation: brillo 0.8s forwards;
+}
+
+@keyframes brillo {
+  from { left: -75%; }
+  to { left: 125%; }
+}
+
+/* Imagen dentro de la card */
+.modalidad img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.3s;
+}
+
+.modalidad:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Texto */
+.modalidad h2 {
+  font-size: 1.4rem;
+  margin: 15px 0 5px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.modalidad p {
+  font-size: 0.95rem;
+  padding: 0 15px 20px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .modalidades-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .modalidades-grid {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+  }
+}
+/* ===== GALERÍAS MEJORADAS ===== */
+.galeria {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  max-width: 1100px;
+}
+
+/* Los enlaces de galería son tarjetas */
+.galeria a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Brillo animado al pasar */
+.galeria a::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+  transform: skewX(-25deg);
+}
+.galeria a:hover::after {
+  animation: brillo 0.8s forwards;
+}
+@keyframes brillo {
+  from { left: -75%; }
+  to { left: 125%; }
+}
+
+/* Imagen con zoom */
+.galeria img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease, filter 0.3s;
+}
+.galeria a:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+}
+
+/* Texto flotante en galería */
+.galeria a::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.galeria a:hover::before {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===== TEXTO GLOBAL ===== */
+body {
+  background: #eef2f7;
+  color: #2c3e50;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center; /* Centrar texto en todos los HTML */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px; /* Para que no se estire de más */
+}
+
+/* Mejor estilo de títulos */
+h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  color: #1e3c72;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+h2 {
+  font-size: 1.8rem;
+  margin: 15px 0;
+  color: #2a5298;
+}
+p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Mapa */
+.mapa {
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
+}
+
